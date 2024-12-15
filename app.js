@@ -43,21 +43,21 @@ function createDeleteButton() {
 
 function editTask(){
     const listItem = this.parentNode;
-    const editInput = listItem.querySelector('input[type=text]');
+    const editInput = listItem.querySelector('.task-input');
     const label = listItem.querySelector('.task-label');
     const editBtn = listItem.querySelector('.edit-button');
 
-    const isEditMode = listItem.classList.contains('editMode');
+    const isEditMode = listItem.classList.contains('edit-mode');
     
     if(isEditMode){
-        label.innerText=editInput.value;
-        editBtn.innerText='Edit';
+        label.innerText = editInput.value;
+        editBtn.innerText = 'Edit';
     }else{
-        editInput.value=label.innerText;
-        editBtn.innerText='Save';
+        editInput.value = label.innerText;
+        editBtn.innerText = 'Save';
     }
 
-    listItem.classList.toggle('editMode');
+    listItem.classList.toggle('edit-mode');
 };
 
 function deleteTask(){
@@ -66,14 +66,14 @@ function deleteTask(){
 }
 
 function taskCompleted(){
-    const listItem=this.parentNode;
+    const listItem = this.parentNode;
     completedTasksHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskIncomplete);
 }
 
 
 function taskIncomplete(){
-    const listItem=this.parentNode;
+    const listItem = this.parentNode;
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
 }
@@ -82,7 +82,7 @@ addButton.addEventListener('click', addTask);
 
 
 function bindTaskEvents(taskListItem,checkBoxEventHandler){
-    const checkBox = taskListItem.querySelector('input[type=checkbox]');
+    const checkBox = taskListItem.querySelector('input[type = checkbox]');
     const editButton = taskListItem.querySelector('.edit-button');
     const deleteButton = taskListItem.querySelector('.delete-button');
 
@@ -92,7 +92,7 @@ function bindTaskEvents(taskListItem,checkBoxEventHandler){
 }
 
 function initializeTasks(holder, checkBoxEventHandler) {
-    Array.from(holder.children).forEach(task => bindTaskEvents(task, checkBoxEventHandler));
+    Array.from(holder.children).forEach(task  => bindTaskEvents(task, checkBoxEventHandler));
 }
 
 initializeTasks(incompleteTaskHolder, taskCompleted);
